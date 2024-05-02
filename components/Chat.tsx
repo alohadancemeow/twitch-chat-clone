@@ -1,43 +1,34 @@
 "use client";
 
 import React from "react";
-// import useChatLiveModeScrolling from '../hooks/useChatLiveModeScrolling'
 import { MessageModel } from "@/utils/models";
 
 import ChatMessage from "./ChatMessage";
-// import ChatPausedAlert from './ChatPausedAlert'
+import ChatPausedAlert from "./ChatPausedAlert";
 import SendMessageForm from "./SendMessageForm";
+
 import useChatMessages from "@/hooks/use-chat-messages";
+import useChatLiveModeScrolling from "@/hooks/use-chat-live-mode-scrolling";
 
 const Chat = () => {
-  const {
-    messages,
-    //  send
-  } = useChatMessages();
-  //   const { chatMessagesBoxRef, isLiveModeEnabled, scrollNewMessages } =
-  //     useChatLiveModeScrolling<HTMLDivElement>(messages);
+  const { messages, send } = useChatMessages();
+  const { chatMessagesBoxRef, isLiveModeEnabled, scrollNewMessages } =
+    useChatLiveModeScrolling<HTMLDivElement>(messages);
 
   return (
     <div className="relative w-full max-w-[550px] px-4 py-3 rounded-lg bg-slate-900 opacity-80">
-      <ChatMessagesBox
-        //   ref={chatMessagesBoxRef}
-        messages={messages}
-      />
-      {/* {!isLiveModeEnabled && (
+      <ChatMessagesBox ref={chatMessagesBoxRef} messages={messages} />
+      {!isLiveModeEnabled && (
         <ChatPausedAlert
           onClick={scrollNewMessages}
           className="absolute inset-x-0 bottom-28 mx-auto"
         />
-      )} */}
-      <SendMessageForm
-        //   onSend={send}
-        className="mt-4"
-      />
+      )}
+      <SendMessageForm onSend={send} className="mt-4" />
     </div>
   );
 };
 
-// eslint-disable-next-line react/display-name
 const ChatMessagesBox = React.forwardRef<
   HTMLDivElement,
   { messages: MessageModel[] }

@@ -1,19 +1,16 @@
 "use client";
 
 import { useState } from "react";
-// import EmojiPickerButton from "./EmojiPickerButton";
+import EmojiPickerButton from "./EmojiPickerButton";
 
 type SendMessageFormProps = {
-  //   onSend: (message: string) => void;
+  onSend: (message: string) => void;
   className?: string;
 };
 
 const MAX_MESSAGE_LENGTH = 300;
 
-const SendMessageForm = ({
-  // onSend,
-  className,
-}: SendMessageFormProps) => {
+const SendMessageForm = ({ onSend, className }: SendMessageFormProps) => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,9 +18,9 @@ const SendMessageForm = ({
 
     const filteredMessage = message.trim().slice(0, MAX_MESSAGE_LENGTH);
 
-    // if (filteredMessage) {
-    //   onSend(filteredMessage);
-    // }
+    if (filteredMessage) {
+      onSend(filteredMessage);
+    }
 
     setMessage("");
   };
@@ -39,10 +36,9 @@ const SendMessageForm = ({
           placeholder="Send a chat message"
         />
         <div className="absolute inset-y-0 right-2 inline-flex items-center bg-slate-700">
-          {/* <EmojiPickerButton
+          <EmojiPickerButton
             onEmojiPick={(emoji) => setMessage((msg) => msg.concat(emoji))}
-          /> */}
-          TODO: Emoji picker
+          />
         </div>
       </div>
 

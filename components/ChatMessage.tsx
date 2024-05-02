@@ -1,3 +1,5 @@
+"use client";
+
 import { MessageModel } from "@/utils/models";
 
 type MessageProps = {
