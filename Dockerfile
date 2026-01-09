@@ -40,6 +40,6 @@ COPY --from=builder /app/lib ./lib
 COPY --from=builder /app/utils ./utils
 
 # Expose port matching server.ts (3000)
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["npm", "run", "start"]
