@@ -2,8 +2,8 @@ import next from "next";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
 
-import { Author } from "@/utils/models";
-import { generateMessage, generateUser } from "@/utils/helpers";
+import { Author } from "./utils/models";
+import { generateMessage, generateUser } from "./utils/helpers";
 import { Profanity } from "@2toad/profanity";
 import { ChatBot } from "./lib/chat-bot";
 
